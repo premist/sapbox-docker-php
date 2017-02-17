@@ -1,2 +1,4 @@
 FROM php:7.1.1-fpm-alpine
-RUN docker-php-ext-install -j8 iconv mcrypt gd mysqli exif mcrypt mbstring sockets
+RUN apk upgrade --update && apk add \
+  coreutils libmcrypt-dev libjpeg-turbo-dev libpng-dev freetype-dev musl-dev \
+  && docker-php-ext-install -j8 mcrypt gd mysqli exif mcrypt mbstring sockets
